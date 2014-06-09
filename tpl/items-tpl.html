@@ -1,0 +1,4 @@
+
+<ul class="list-x nav nav-pills nav-stacked">
+  <li ng-repeat="item in ngModel | filter:q.val" ng-include="itemTpl ? 'itemtpl' : itemTemplate" ng-class="isSelected(item)" ng-click="selectItem(item)"></li>
+</ul>

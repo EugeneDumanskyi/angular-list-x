@@ -1,0 +1,29 @@
+doctype html
+html
+    head
+        script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js")
+        script(src="../angular.listx.js")
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js")
+        script(src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js")
+        script(src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js")
+        //link(rel="stylesheet", href="../angular.listx.css")
+        link(rel="stylesheet", href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css")
+        link(rel="stylesheet", href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.css")
+        script angular.module('myApp', ['listxModule']);
+    body(ng-app="myApp")
+        .container-fluid
+            .row
+                .col-md-3
+                    list-x(ng-model="items", title="Default Template", load-url="test2.json")
+                .col-md-9
+                    h1 List X with default template
+                    pre: xmp.prettyprint angular.module('myApp', ['listxModule']);
+                    pre: xmp.prettyprint <body ng-app="myApp">
+                    pre: xmp.prettyprint <list-x ng-model="items" title="Default Template" load-url="test2.json"></list-x>
+        script.
+            !function ($) {
+              $(function(){
+                var $window = $(window)
+                window.prettyPrint && prettyPrint()
+              })
+            }(window.jQuery)

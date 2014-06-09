@@ -1,0 +1,6 @@
+.list-x-main.panel.panel-default
+    #list-x-title.panel-heading(ng-if="title"): h1.panel-title {{title}}
+    .panel-body
+        div(ng-if="hideSearchBar!=='true'", ng-include="searchBarTemplate")
+        div(ng-include="itemsTemplate")
+        div(ng-transclude)

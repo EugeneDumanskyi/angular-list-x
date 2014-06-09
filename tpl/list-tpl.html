@@ -1,0 +1,11 @@
+
+<div class="list-x-main panel panel-default">
+  <div id="list-x-title" ng-if="title" class="panel-heading">
+    <h1 class="panel-title">{{title}}</h1>
+  </div>
+  <div class="panel-body">
+    <div ng-if="hideSearchBar!=='true'" ng-include="searchBarTemplate"></div>
+    <div ng-include="itemsTemplate"></div>
+    <div ng-transclude="ng-transclude"></div>
+  </div>
+</div>
