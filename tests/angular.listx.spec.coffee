@@ -1,13 +1,16 @@
-describe 'List-x directive', () ->
-    element = $compile =  $rootScope = null
+describe 'ListX directive', () ->
+    element = $compile =  $rootScope = $controller = $templateCache = listxConfig = null
 
     beforeEach module 'listxModule'
 
     beforeEach module 'list-tpl'
 
-    beforeEach inject (_$compile_, _$rootScope_) ->
+    beforeEach inject (_$compile_, _$rootScope_, _$controller_, _$templateCache_, _listxConfig_) ->
         $compile = _$compile_
         $rootScope = _$rootScope_
+        $templateCache = _$templateCache_
+        listxConfig = _listxConfig_
+
         $rootScope.items = [
             text: 'Item 1'
             desc: 'Desc 1'
@@ -21,8 +24,23 @@ describe 'List-x directive', () ->
             text: 'Item 4'
             desc: 'Desc 4'
         ];
+
         element = $compile('<list-x ng-model="items" title="Test"></list-x>')($rootScope)
         $rootScope.$digest()
+
+        $controller = _$controller_ 'listxController',
+            $scope: $rootScope
+            $element: element
+            $attrs: {}
+            $transclude: () -> null
+            $templateCache: $templateCache
+            listxConfig: listxConfig
+
+    describe 'ListX Controller', () ->
+        it 'Has correct configuration', () ->
+            expect($rootScope.searchBarTemplate).toEqual listxConfig.searchBarTemplate
+            expect($rootScope.itemsTemplate).toEqual listxConfig.itemsTemplate
+            expect($rootScope.itemTemplate).toEqual listxConfig.itemTemplate
 
     it 'Replaces the element with the appropriate content', () ->
         expect(element).toHaveClass "list-x-main"
