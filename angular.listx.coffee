@@ -6,22 +6,7 @@ angular.module 'listxModule', []
     itemsTemplate: '/tpl/items-tpl.html'
     itemTemplate: '/tpl/item-tpl.html'
 
-.directive 'listX', ['$http', '$templateCache', 'listxConfig', ($http, $templateCache, listxConfig) ->
-    restrict: 'E'
-    transclude: true
-    replace: true
-    require: 'ngModel'
-    scope:
-        title: '@'
-        hideSearchBar: '@'
-        itemHandlers: '&'
-        loadUrl: '@'
-        ngModel: '='
-        onClick: '&'
-
-    templateUrl: (tElement, tAttrs) -> listxConfig.template
-
-    controller: ($scope, $element, $attrs, $transclude) ->
+.controller 'listxController', ($scope, $element, $attrs, $transclude, $templateCache, listxConfig) ->
         $scope.searchBarTemplate = listxConfig.searchBarTemplate
         $scope.itemsTemplate = listxConfig.itemsTemplate
         $scope.itemTemplate = listxConfig.itemTemplate
@@ -40,6 +25,23 @@ angular.module 'listxModule', []
             $scope.itemTemplate = src if src
             $templateCache.put 'itemtpl', tpl
         null
+
+.directive 'listX', ['$http', '$templateCache', 'listxConfig', ($http, $templateCache, listxConfig) ->
+    restrict: 'E'
+    transclude: true
+    replace: true
+    require: 'ngModel'
+    scope:
+        title: '@'
+        hideSearchBar: '@'
+        itemHandlers: '&'
+        loadUrl: '@'
+        ngModel: '='
+        onClick: '&'
+
+    templateUrl: (tElement, tAttrs) -> listxConfig.template
+
+    controller: 'listxController'
 
     link: (scope, iElement, iAttrs, controller) ->
         if scope.loadUrl
