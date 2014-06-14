@@ -1,5 +1,5 @@
 describe 'ListX directive', () ->
-    element = $compile =  $rootScope = $controller = $templateCache = listxConfig = null
+    element = scope = $compile = $rootScope = $controller = $templateCache = listxConfig = null
 
     beforeEach module 'listxModule'
 
@@ -27,20 +27,16 @@ describe 'ListX directive', () ->
 
         element = $compile('<list-x ng-model="items" title="Test"></list-x>')($rootScope)
         $rootScope.$digest()
+        scope = element.isolateScope()
 
         $controller = _$controller_ 'listxController',
-            $scope: $rootScope
+            $scope: scope
             $element: element
             $attrs: {}
             $transclude: () -> null
             $templateCache: $templateCache
             listxConfig: listxConfig
 
-    describe 'ListX Controller', () ->
-        it 'Has correct configuration', () ->
-            expect($rootScope.searchBarTemplate).toEqual listxConfig.searchBarTemplate
-            expect($rootScope.itemsTemplate).toEqual listxConfig.itemsTemplate
-            expect($rootScope.itemTemplate).toEqual listxConfig.itemTemplate
 
     it 'Replaces the element with the appropriate content', () ->
         expect(element).toHaveClass "list-x-main"
@@ -55,12 +51,38 @@ describe 'ListX directive', () ->
         expect(searchBarElement).toExist()
         expect(searchBarElement.find 'input[type=search]').toExist()
 
-    it 'Has correct number of items', () ->
+    it 'Has the correct number of items', () ->
         listElement = element.find 'ul.list-x'
         expect(listElement).toExist()
         items = listElement.find 'li'
         expect(items).toHaveLength(4)
 
-        describe 'List item', () ->
-            it 'Has correct template', () ->
-                expect(items.find '.list-x-item').toExist()
+    describe 'List item', () ->
+        it 'Has correct template', () ->
+            items = element.find 'ul.list-x li'
+            expect(items.find '.list-x-item').toExist()
+
+    describe 'ListX Controller', () ->
+        it 'Should be defined', () ->
+            expect($controller).toBeDefined()
+
+        it 'Has the correct configuration', () ->
+            expect(scope.searchBarTemplate).toEqual listxConfig.searchBarTemplate
+            expect(scope.itemsTemplate).toEqual listxConfig.itemsTemplate
+            expect(scope.itemTemplate).toEqual listxConfig.itemTemplate
+
+        it 'Should mark given item selected', () ->
+            expect(scope.isSelected scope.ngModel[0]).toNotEqual 'active'
+            scope.ngModel[0].selected = true
+            expect(scope.isSelected scope.ngModel[0]).toEqual 'active'
+
+        it 'Should select the item', () ->
+            expect(scope.ngModel[1].selected).toBeUndefined()
+            scope.selectItem scope.ngModel[1]
+            expect(scope.ngModel[1].selected).toBeDefined()
+            expect(scope.ngModel[i].selected).toBeUndefined() for i in [0..3] when i isnt 1
+
+        it 'Should set the item\'s template', () ->
+            $controller.setItemTemplate '<span>test</span>'
+            expect(scope.itemTpl).toEqual true
+            expect($templateCache.get 'listxItemTpl').toEqual '<span>test</span>'
