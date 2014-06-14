@@ -36,7 +36,7 @@ angular.module('listxModule', []).value('listxConfig', {
     if (src) {
       $scope.itemTemplate = src;
     }
-    return $templateCache.put('itemtpl', tpl);
+    return $templateCache.put('listxItemTpl', tpl);
   };
   return null;
 }).directive('listX', [

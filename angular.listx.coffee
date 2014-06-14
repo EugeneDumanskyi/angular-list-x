@@ -23,7 +23,7 @@ angular.module 'listxModule', []
         this.setItemTemplate = (tpl, src) ->
             $scope.itemTpl = true
             $scope.itemTemplate = src if src
-            $templateCache.put 'itemtpl', tpl
+            $templateCache.put 'listxItemTpl', tpl
         null
 
 .directive 'listX', ['$http', '$templateCache', 'listxConfig', ($http, $templateCache, listxConfig) ->
