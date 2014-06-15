@@ -1,15 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
-    <script src="../angular.listx.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
-    <!--link(rel="stylesheet", href="../angular.listx.css")-->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.css">
-    <script>angular.module('myApp', ['listxModule']);</script>
   </head>
   <body ng-app="myApp">
     <div class="container-fluid">
@@ -20,19 +13,31 @@
           </list-x>
         </div>
         <div class="col-md-9">
-          <h1>Minimalistic List X</h1>
-          <pre>
-            <xmp class="prettyprint">angular.module('myApp', ['listxModule']);</xmp></pre>
-          <pre>
-            <xmp class="prettyprint"><body ng-app="myApp"></xmp></pre>
-          <pre ng-non-bindable>
-            <xmp class="prettyprint"><list-x ng-model="items" title="Minimalistic" load-url="test1.json">
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h1 class="panel-title">Minimalistic List X</h1>
+            </div>
+            <div class="panel-body">
+              <pre>
+                <xmp class="prettyprint">angular.module('myApp', ['listxModule']);</xmp></pre>
+              <pre>
+                <xmp class="prettyprint"><body ng-app="myApp"></xmp></pre>
+              <pre ng-non-bindable>
+                <xmp class="prettyprint"><list-x ng-model="items" title="Minimalistic" load-url="test1.json">
     <item-template><a href="#" class="list-x-item"><strong>{{ item.text }}</strong></a></item-template>
 </list-x>
-            </xmp></pre>
+                </xmp></pre>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="../angular.listx.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+    <script>angular.module('myApp', ['listxModule']);</script>
     <script>
       !function ($) {
         $(function(){
