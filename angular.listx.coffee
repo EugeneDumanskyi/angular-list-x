@@ -18,7 +18,7 @@ angular.module 'listxModule', []
         $scope.selectItem = (item) ->
             delete curItem.selected for curItem in $scope.ngModel when curItem.selected
             item.selected = true
-            $scope.onClick item:item
+            $scope.onSelect item:item
 
         this.setItemTemplate = (tpl, src) ->
             $scope.itemTpl = true
@@ -37,7 +37,7 @@ angular.module 'listxModule', []
         itemHandlers: '&'
         loadUrl: '@'
         ngModel: '='
-        onClick: '&'
+        onSelect: '&'
 
     templateUrl: (tElement, tAttrs) -> listxConfig.template
 

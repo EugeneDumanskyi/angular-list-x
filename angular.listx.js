@@ -27,7 +27,7 @@ angular.module('listxModule', []).value('listxConfig', {
       }
     }
     item.selected = true;
-    return $scope.onClick({
+    return $scope.onSelect({
       item: item
     });
   };
@@ -52,7 +52,7 @@ angular.module('listxModule', []).value('listxConfig', {
         itemHandlers: '&',
         loadUrl: '@',
         ngModel: '=',
-        onClick: '&'
+        onSelect: '&'
       },
       templateUrl: function(tElement, tAttrs) {
         return listxConfig.template;
