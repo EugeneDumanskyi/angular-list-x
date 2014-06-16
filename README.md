@@ -4,11 +4,11 @@
 
 ### Bower
 
-`bower install listx`
+`bower install angular-list-x`
 
 ### NPM
 
-`npm install listx`
+`npm install angular-list-x`
 
 ## Basic example:
 
