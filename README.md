@@ -1,5 +1,15 @@
 # List X widget for AngularJS & Bootstrap
 
+## Installation
+
+### Bower
+
+`bower install listx`
+
+### NPM
+
+`npm install listx`
+
 ## Basic example:
 
 * CSS styles

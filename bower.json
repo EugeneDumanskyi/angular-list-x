@@ -1,6 +1,6 @@
 {
   "name": "angular-list-x",
-  "version": "0.9.2",
+  "version": "1.0.0",
   "authors": [
     "Eugene Dumanskiy <eugene.dumanskyi@gmail.com>"
   ],
@@ -12,7 +12,8 @@
     "module",
     "list",
     "listview",
-    "control"
+    "component",
+    "widget"
   ],
   "dependencies": {
       "jquery": ">=1.11.0",
