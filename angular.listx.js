@@ -52,7 +52,8 @@ angular.module('listxModule', []).value('listxConfig', {
         itemHandlers: '&',
         loadUrl: '@',
         ngModel: '=',
-        onSelect: '&'
+        onSelect: '&',
+        onLoad: '&'
       },
       templateUrl: function(tElement, tAttrs) {
         return listxConfig.template;
@@ -61,7 +62,8 @@ angular.module('listxModule', []).value('listxConfig', {
       link: function(scope, iElement, iAttrs, controller) {
         if (scope.loadUrl) {
           $http.get(scope.loadUrl).success(function(data) {
-            return scope.ngModel = data;
+            scope.ngModel = data;
+            return scope.onLoad();
           });
         }
         return $('.list-x-main div[ng-transclude]').remove();

@@ -38,6 +38,7 @@ angular.module 'listxModule', []
         loadUrl: '@'
         ngModel: '='
         onSelect: '&'
+        onLoad: '&'
 
     templateUrl: (tElement, tAttrs) -> listxConfig.template
 
@@ -45,7 +46,9 @@ angular.module 'listxModule', []
 
     link: (scope, iElement, iAttrs, controller) ->
         if scope.loadUrl
-            $http.get(scope.loadUrl).success (data) -> scope.ngModel = data
+            $http.get(scope.loadUrl).success (data) ->
+                scope.ngModel = data
+                scope.onLoad()
         $('.list-x-main div[ng-transclude]').remove()
 ]
 
