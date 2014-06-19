@@ -1,0 +1,7 @@
+[
+    { "text": "John", "desc": "Recruiter", "image": "../images/user_photo_generic.png" },
+    { "text": "Karl", "desc": "Sr. Developer", "image": "../images/user_photo_generic.png" },
+    { "text": "Mark", "desc": "Teacher", "image": "../images/user_photo_generic.png" },
+    { "text": "Paul", "desc": "HR", "image": "../images/user_photo_generic.png" },
+    { "text": "Peter", "desc": "Manager", "image": "../images/user_photo_generic.png" }
+]
