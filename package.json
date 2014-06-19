@@ -1,10 +1,10 @@
 {
   "name": "angular-list-x",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Extended List widget for AngularJS & Bootstrap",
   "main": "angular.listx.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node karma start --single-run"
   },
   "repository": {
     "type": "git",
@@ -31,5 +31,5 @@
   "bugs": {
     "url": "https://github.com/EugeneDumanskyi/angular-list-x/issues"
   },
-  "homepage": "https://github.com/EugeneDumanskyi/angular-list-x"
+  "homepage": "http://eugenedumanskyi.github.io/angular-list-x"
 }
