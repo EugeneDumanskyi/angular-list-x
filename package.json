@@ -1,6 +1,6 @@
 {
   "name": "angular-list-x",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Extended List widget for AngularJS & Bootstrap",
   "main": "angular.listx.js",
   "scripts": {
