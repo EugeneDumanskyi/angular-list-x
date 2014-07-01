@@ -1,7 +1,7 @@
 
 <div class="list-x-main panel panel-info">
   <div id="list-x-title" ng-if="title" class="panel-heading">
-    <h1 class="panel-title">{{title}}</h1>
+    <h1 class="panel-title">{{title | translate}}</h1>
   </div>
   <div class="panel-body">
     <div ng-if="hideSearchBar!=='true'" ng-include="searchBarTemplate"></div>
