@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "angular.listx.translations.js",
+  "sourceRoot": "",
+  "sources": [
+    "angular.listx.translations.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA,OAAO,CAAC,MAAR,CAAe,aAAf,CAA6B,CAAC,MAA9B,CAAqC,SAAC,QAAD,GAAA;SACjC,QAAQ,CAAC,SAAT,CAAmB,mBAAnB,EAAwC,SAAC,SAAD,GAAA;AAEpC,IAAA,SAAU,CAAA,kBAAA,CAAV,GACI;AAAA,MAAA,EAAA,EAAI,kBAAJ;AAAA,MACA,EAAA,EAAI,iBADJ;AAAA,MAEA,EAAA,EAAI,mBAFJ;AAAA,MAGA,EAAA,EAAI,0BAHJ;AAAA,MAIA,EAAA,EAAI,qBAJJ;KADJ,CAAA;WAMA,UARoC;EAAA,CAAxC,EADiC;AAAA,CAArC,CAAA,CAAA"
+}

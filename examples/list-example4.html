@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.css">
+    <style>.active .desc {color: #ddd; }</style>
+  </head>
+  <body ng-app="myApp">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+          <list-x ng-model="items" title="Default Template" load-url="test2.json"></list-x>
+        </div>
+        <div class="col-md-9">
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h1 class="panel-title">List X: internationalization support</h1>
+            </div>
+            <div class="panel-body">
+              <pre>
+                <xmp class="prettyprint">angular.module('myApp', ['listxModule']);
+angular.module('listxModule').config(function($provide)  {
+    // set current language
+    $provide.value('listxLanguage', 'fr');
+});
+                </xmp></pre>
+              <pre>
+                <xmp class="prettyprint"><body ng-app="myApp"></xmp></pre>
+              <pre>
+                <xmp class="prettyprint"><list-x ng-model="items" title="Default Template" load-url="test2.json"></list-x></xmp></pre>
+              <pre>
+                <xmp class="prettyprint">// angular.listx.translations.js
+
+angular.module('listxModule').config(function($provide) {
+  return $provide.decorator('listxTranslations', function($delegate) {
+    // extend default dictionary by adding new words
+    $delegate['Default Template'] = {
+      en: 'Default Template',
+      de: 'Standardvorlage',
+      fr: 'Modèle par défaut',
+      es: 'Plantilla Predeterminada',
+      ru: 'Шаблон по умолчанию'
+    };
+    return $delegate;
+  });
+});
+                </xmp></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="../angular.listx.min.js"></script>
+    <script src="angular.listx.translations.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+    <script>
+      angular.module('myApp', ['listxModule']);
+      angular.module('listxModule').config(function($provide)  {
+          // set current language
+          $provide.value('listxLanguage', 'fr');
+      });
+    </script>
+    <script>
+      !function ($) {
+        $(function(){
+          var $window = $(window)
+          window.prettyPrint && prettyPrint()
+        })
+      }(window.jQuery)
+    </script>
+  </body>
+</html>

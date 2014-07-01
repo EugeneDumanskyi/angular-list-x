@@ -1,0 +1,58 @@
+doctype html
+html
+    head
+        link(rel="stylesheet", href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css")
+        link(rel="stylesheet", href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.css")
+        style .active .desc {color: #ddd; }
+    body(ng-app="myApp")
+        .container-fluid
+            .row
+                .col-md-3
+                    list-x(ng-model="items", title="Default Template", load-url="test2.json")
+                .col-md-9
+                    .panel.panel-warning
+                        .panel-heading: h1.panel-title List X: internationalization support
+                        .panel-body
+                            pre: xmp.prettyprint.
+                                angular.module('myApp', ['listxModule']);
+                                angular.module('listxModule').config(function($provide)  {
+                                    // set current language
+                                    $provide.value('listxLanguage', 'fr');
+                                });
+                            pre: xmp.prettyprint <body ng-app="myApp">
+                            pre: xmp.prettyprint <list-x ng-model="items" title="Default Template" load-url="test2.json"></list-x>
+                            pre: xmp.prettyprint.
+                                // angular.listx.translations.js
+
+                                angular.module('listxModule').config(function($provide) {
+                                  return $provide.decorator('listxTranslations', function($delegate) {
+                                    // extend default dictionary by adding new words
+                                    $delegate['Default Template'] = {
+                                      en: 'Default Template',
+                                      de: 'Standardvorlage',
+                                      fr: 'Modèle par défaut',
+                                      es: 'Plantilla Predeterminada',
+                                      ru: 'Шаблон по умолчанию'
+                                    };
+                                    return $delegate;
+                                  });
+                                });
+        script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js")
+        script(src="../angular.listx.min.js")
+        script(src="angular.listx.translations.js")
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js")
+        script(src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js")
+        script(src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js")
+        script.
+            angular.module('myApp', ['listxModule']);
+            angular.module('listxModule').config(function($provide)  {
+                // set current language
+                $provide.value('listxLanguage', 'fr');
+            });
+        script.
+            !function ($) {
+              $(function(){
+                var $window = $(window)
+                window.prettyPrint && prettyPrint()
+              })
+            }(window.jQuery)
