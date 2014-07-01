@@ -1,5 +1,5 @@
 .list-x-main.panel.panel-info
-    #list-x-title.panel-heading(ng-if="title"): h1.panel-title {{title}}
+    #list-x-title.panel-heading(ng-if="title"): h1.panel-title {{title | translate}}
     .panel-body
         div(ng-if="hideSearchBar!=='true'", ng-include="searchBarTemplate")
         div(ng-include="itemsTemplate")

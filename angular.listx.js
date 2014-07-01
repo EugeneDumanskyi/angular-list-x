@@ -4,6 +4,23 @@ angular.module('listxModule', []).value('listxConfig', {
   searchBarTemplate: '/tpl/search-bar-tpl.html',
   itemsTemplate: '/tpl/items-tpl.html',
   itemTemplate: '/tpl/item-tpl.html'
+}).value('listxLanguage', 'en').value('listxTranslations', {
+  Search: {
+    en: 'Search',
+    de: 'Suche',
+    fr: 'Rechercher',
+    es: 'Buscar',
+    ru: 'Поиск'
+  }
+}).filter('translate', function(listxLanguage, listxTranslations) {
+  return function(input, lang) {
+    var ret;
+    try {
+      return ret = listxTranslations[input][lang ? lang : listxLanguage];
+    } catch (_error) {
+      return ret = input;
+    }
+  };
 }).controller('listxController', function($scope, $element, $attrs, $transclude, $templateCache, listxConfig) {
   $scope.searchBarTemplate = listxConfig.searchBarTemplate;
   $scope.itemsTemplate = listxConfig.itemsTemplate;
@@ -66,7 +83,8 @@ angular.module('listxModule', []).value('listxConfig', {
             return scope.onLoad();
           });
         }
-        return $('.list-x-main div[ng-transclude]').remove();
+        $('.list-x-main div[ng-transclude]').remove();
+        return $('.list-x-main').removeAttr('title');
       }
     };
   }

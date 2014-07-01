@@ -6,6 +6,23 @@ angular.module 'listxModule', []
     itemsTemplate: '/tpl/items-tpl.html'
     itemTemplate: '/tpl/item-tpl.html'
 
+.value 'listxLanguage', 'en'
+
+.value 'listxTranslations',
+    Search:
+        en: 'Search'
+        de: 'Suche'
+        fr: 'Rechercher'
+        es: 'Buscar'
+        ru: 'Поиск'
+
+.filter 'translate', (listxLanguage, listxTranslations) ->
+    (input, lang) ->
+        try
+            ret = listxTranslations[input][if lang then lang else listxLanguage]
+        catch
+            ret = input
+
 .controller 'listxController', ($scope, $element, $attrs, $transclude, $templateCache, listxConfig) ->
         $scope.searchBarTemplate = listxConfig.searchBarTemplate
         $scope.itemsTemplate = listxConfig.itemsTemplate
@@ -50,6 +67,8 @@ angular.module 'listxModule', []
                 scope.ngModel = data
                 scope.onLoad()
         $('.list-x-main div[ng-transclude]').remove()
+        $('.list-x-main').removeAttr 'title'
+
 ]
 
 
