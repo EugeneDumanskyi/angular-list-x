@@ -86,3 +86,22 @@ describe 'ListX directive', () ->
             $controller.setItemTemplate '<span>test</span>'
             expect(scope.itemTpl).toEqual true
             expect($templateCache.get 'listxItemTpl').toEqual '<span>test</span>'
+
+
+describe 'translate filter', () ->
+    transFilter = translations = lang = null
+
+    beforeEach module 'listxModule'
+
+    beforeEach () ->
+        angular.module('listxModule').config ($provide) ->
+            $provide.value 'listxLanguage', 'de'
+
+    beforeEach inject (_translateFilter_, _listxTranslations_, _listxLanguage_) ->
+        transFilter = _translateFilter_
+        translations = _listxTranslations_
+        lang = _listxLanguage_
+
+    it 'should translate the specified text to selected language', () ->
+        expect(transFilter 'Search').toEqual translations['Search']['de']
+        expect(transFilter 'Search', 'fr').toEqual translations['Search']['fr']

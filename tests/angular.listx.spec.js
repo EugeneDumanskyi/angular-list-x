@@ -102,4 +102,24 @@ describe('ListX directive', function() {
   });
 });
 
+describe('translate filter', function() {
+  var lang, transFilter, translations;
+  transFilter = translations = lang = null;
+  beforeEach(module('listxModule'));
+  beforeEach(function() {
+    return angular.module('listxModule').config(function($provide) {
+      return $provide.value('listxLanguage', 'de');
+    });
+  });
+  beforeEach(inject(function(_translateFilter_, _listxTranslations_, _listxLanguage_) {
+    transFilter = _translateFilter_;
+    translations = _listxTranslations_;
+    return lang = _listxLanguage_;
+  }));
+  return it('should translate the specified text to selected language', function() {
+    expect(transFilter('Search')).toEqual(translations['Search']['de']);
+    return expect(transFilter('Search', 'fr')).toEqual(translations['Search']['fr']);
+  });
+});
+
 //# sourceMappingURL=angular.listx.spec.map
