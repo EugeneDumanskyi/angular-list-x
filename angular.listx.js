@@ -34,6 +34,16 @@ angular.module('listxModule', []).value('listxConfig', {
       return 'active';
     }
   };
+  $scope.overItem = function(item) {
+    return $scope.onMouseOver({
+      item: item
+    });
+  };
+  $scope.leaveItem = function(item) {
+    return $scope.onMouseLeave({
+      item: item
+    });
+  };
   $scope.selectItem = function(item) {
     var curItem, _i, _len, _ref;
     _ref = $scope.ngModel;
@@ -70,7 +80,9 @@ angular.module('listxModule', []).value('listxConfig', {
         loadUrl: '@',
         ngModel: '=',
         onSelect: '&',
-        onLoad: '&'
+        onLoad: '&',
+        onMouseOver: '&',
+        onMouseLeave: '&'
       },
       templateUrl: function(tElement, tAttrs) {
         return listxConfig.template;

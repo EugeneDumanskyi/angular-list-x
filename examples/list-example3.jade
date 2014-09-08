@@ -11,7 +11,7 @@ html
         .container-fluid(ng-controller="MainCtrl")
             .row
                 .col-md-3
-                    list-x(ng-model="items", title="Contacts", on-load="loadHandler()", on-select="clickHandler(item)", load-url="test3.json", item-handlers="nestedHandlers")
+                    list-x(ng-model="items", title="Contacts", on-load="loadHandler()", on-select="clickHandler(item)", on-mouse-over="mouseOverHandler(item)", on-mouse-leave="mouseLeaveHandler(item)", load-url="test3.json", item-handlers="nestedHandlers")
                         item-template
                             a.list-x-item(href="#")
                                 img.img-rounded.icon.pull-left(ng-src="{{item.image}}")
@@ -30,6 +30,8 @@ html
 
                                     angular.module('listxModule').controller('MainCtrl', ['$scope', function($scope) {
                                         $scope.clickHandler = function(item) { alert(item.text + ' is selected') };
+                                        $scope.mouseOverHandler = function(item) { alert('Mouse over: ' + item.text) };
+                                        $scope.mouseLeaveHandler = function(item) { alert('Mouse leave: ' + item.text) };
                                         $scope.loadHandler = function() { console.log('items are loaded') };
                                         $scope.nestedHandlers = {
                                             itemBtnClick: function(item, $event) {
@@ -41,7 +43,7 @@ html
                                     }]);
                             pre: xmp.prettyprint <body ng-app="myApp">
                             pre(ng-non-bindable): xmp.prettyprint.
-                                <list-x ng-model="items" title="Contacts" on-load="loadHandler()" on-select="clickHandler(item)" load-url="test3.json" item-handlers="nestedHandlers">
+                                <list-x ng-model="items" title="Contacts" on-load="loadHandler()" on-select="clickHandler(item)" on-mouse-over="mouseOverHandler(item)" on-mouse-leave="mouseLeaveHandler(item)" load-url="test3.json" item-handlers="nestedHandlers">
                                     <item-template>
                                         <a href="#" class="list-x-item"><img ng-src="{{item.image}}" class="icon pull-left">
                                         <div class="main-text"><strong>{{ item.text }}</strong></div>
@@ -60,6 +62,8 @@ html
             angular.module('myApp', ['listxModule']);
             angular.module('listxModule').controller('MainCtrl', ['$scope', function($scope) {
                 $scope.clickHandler = function(item) { alert(item.text + ' is selected') };
+                $scope.mouseOverHandler = function(item) { alert('Mouse over: ' + item.text) };
+                $scope.mouseLeaveHandler = function(item) { alert('Mouse leave: ' + item.text) };
                 $scope.loadHandler = function() { console.log('items are loaded') };
                 $scope.nestedHandlers = {
                     itemBtnClick: function(item, $event) {

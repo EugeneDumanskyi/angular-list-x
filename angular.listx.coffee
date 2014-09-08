@@ -32,6 +32,10 @@ angular.module 'listxModule', []
 
         $scope.isSelected = (item) -> 'active' if item.selected
 
+        $scope.overItem = (item) -> $scope.onMouseOver item:item
+
+        $scope.leaveItem = (item) -> $scope.onMouseLeave item:item
+
         $scope.selectItem = (item) ->
             delete curItem.selected for curItem in $scope.ngModel when curItem.selected
             item.selected = true
@@ -56,6 +60,8 @@ angular.module 'listxModule', []
         ngModel: '='
         onSelect: '&'
         onLoad: '&'
+        onMouseOver: '&'
+        onMouseLeave: '&'
 
     templateUrl: (tElement, tAttrs) -> listxConfig.template
 

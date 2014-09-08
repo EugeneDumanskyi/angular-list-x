@@ -1,4 +1,4 @@
 
 <ul class="list-x nav nav-pills nav-stacked">
-  <li ng-repeat="item in ngModel | filter:q.val" ng-include="itemTpl ? 'listxItemTpl' : itemTemplate" ng-class="isSelected(item)" ng-click="selectItem(item)"></li>
+  <li ng-repeat="item in ngModel | filter:q.val" ng-include="itemTpl ? 'listxItemTpl' : itemTemplate" ng-class="isSelected(item)" ng-click="selectItem(item)" ng-mouseleave="leaveItem(item)" ng-mouseover="overItem(item)"></li>
 </ul>
